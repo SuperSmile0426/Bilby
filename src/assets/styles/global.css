@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+  font-family: objektiv-mk1, sans-serif;
+
+  transition: all;
+  transition-duration: 0.3s;
+}
+
+body {
+  margin: 0px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
