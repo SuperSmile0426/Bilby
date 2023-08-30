@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { IDocument } from "consts";
+import { DocumentsContext } from "contexts";
 import {
   Container,
   ContentContainer,
@@ -27,6 +28,8 @@ interface DocumentDetailComponentProps {
 export const DocumentDetailComponent: React.FC<
   DocumentDetailComponentProps
 > = ({ document, onFirst, onLast, onPrev, onNext, count, index }) => {
+  const { setLabels: saveDocument } = useContext(DocumentsContext);
+
   const [labels, setLabels] = useState<string[]>(document.labels ?? []);
 
   useEffect(() => {
@@ -38,6 +41,8 @@ export const DocumentDetailComponent: React.FC<
   };
 
   const onSave = () => {
+    saveDocument(document.id, labels);
+
     onNext();
   };
 
