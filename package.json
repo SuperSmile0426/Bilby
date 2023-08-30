@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/SuperSmile0426/Bilby-test-assessment#readme",
   "dependencies": {
+    "@radix-ui/react-navigation-menu": "^1.1.3",
     "axios": "^1.4.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",

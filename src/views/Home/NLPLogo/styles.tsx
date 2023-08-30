@@ -5,7 +5,7 @@ export const Container = styled.div`
   width: 100%;
   height: 100vh;
 
-  background-image: url('public/images/bg/main-bg.jpg');
+  background-image: url('images/bg/main-bg.jpg');
   background-size: cover;
   background-position: center;
   color: white;
