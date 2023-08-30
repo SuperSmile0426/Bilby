@@ -1,10 +1,10 @@
 import React from "react";
-import { NLPLogoSection } from "./NLPLogo";
+import { NLPLogo } from "./NLPLogo";
 
 export const HomeView: React.FC = () => {
   return (
     <>
-      <NLPLogoSection />
+      <NLPLogo />
     </>
   );
 };

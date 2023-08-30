@@ -8,7 +8,7 @@ import {
   BottomShadow,
 } from './styles';
 
-export const NLPLogoSection: React.FC = () => {
+export const NLPLogo: React.FC = () => {
   return (
     <Container>
       <OpacityContainer></OpacityContainer>

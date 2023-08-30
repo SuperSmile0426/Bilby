@@ -17,7 +17,7 @@ export const DocumentsList: React.FC<DocumentsListProps> = ({
   onSelect,
 }) => {
   return (
-    <Container>
+    <Container collapsed={collapsed ? "collapsed" : ""}>
       {documents.map((document, index) => (
         <DocumentComponent
           key={document.id}
