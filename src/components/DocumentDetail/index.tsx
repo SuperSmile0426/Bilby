@@ -14,6 +14,8 @@ import {
   CountIndex,
 } from "./styles";
 import { LabelInputComponent } from "../LabelInput";
+import { SuggestLabelModalComponent } from "components/SuggestLabelModal";
+import { ConfirmDialogComponent } from "components/ConfirmDialog";
 
 interface DocumentDetailComponentProps {
   document: IDocument;
@@ -25,20 +27,26 @@ interface DocumentDetailComponentProps {
   index: number;
 }
 
+type ConfirmDialogOpenStatus = {
+  status: boolean;
+  type: "first" | "last" | "prev" | "next";
+};
+
 export const DocumentDetailComponent: React.FC<
   DocumentDetailComponentProps
 > = ({ document, onFirst, onLast, onPrev, onNext, count, index }) => {
   const { setLabels: saveDocument } = useContext(DocumentsContext);
 
   const [labels, setLabels] = useState<string[]>(document.labels ?? []);
+  const [isConfirmDialogOpen, setIsConfirmDialogOpen] =
+    useState<ConfirmDialogOpenStatus>({
+      status: false,
+      type: "prev",
+    });
 
   useEffect(() => {
     setLabels(document.labels ?? []);
   }, [document]);
-
-  const onLabelChange = (newLabels: string[]) => {
-    setLabels(newLabels);
-  };
 
   const onSave = () => {
     saveDocument(document.id, labels);
@@ -50,20 +58,87 @@ export const DocumentDetailComponent: React.FC<
     setLabels(document.labels ?? []);
   };
 
+  const onSuggestLabel = (newLabels: string[]) => {
+    setLabels(newLabels);
+  };
+
+  const onLabelChange = (newLabels: string[]) => {
+    setLabels(newLabels);
+  };
+
   const onFirstClick = () => {
-    onFirst();
+    if ((document.labels ?? []).toString() !== labels.toString()) {
+      setIsConfirmDialogOpen({
+        status: true,
+        type: "first",
+      });
+    } else {
+      onFirst();
+    }
   };
 
   const onLastClick = () => {
-    onLast();
+    if ((document.labels ?? []).toString() !== labels.toString()) {
+      setIsConfirmDialogOpen({
+        status: true,
+        type: "last",
+      });
+    } else {
+      onLast();
+    }
   };
 
   const onPrevClick = () => {
-    onPrev();
+    if ((document.labels ?? []).toString() !== labels.toString()) {
+      setIsConfirmDialogOpen({
+        status: true,
+        type: "prev",
+      });
+    } else {
+      onPrev();
+    }
   };
 
   const onNextClick = () => {
-    onNext();
+    if ((document.labels ?? []).toString() !== labels.toString()) {
+      setIsConfirmDialogOpen({
+        status: true,
+        type: "next",
+      });
+    } else {
+      onNext();
+    }
+  };
+
+  const onConfirm = () => {
+    saveDocument(document.id, labels);
+
+    switch (isConfirmDialogOpen.type) {
+      case "first":
+        onFirst();
+        break;
+      case "last":
+        onLast();
+        break;
+      case "prev":
+        onPrev();
+        break;
+      case "next":
+        onNext();
+        break;
+    }
+
+    setIsConfirmDialogOpen({
+      status: false,
+      type: "prev",
+    });
+  };
+
+  const onCancel = () => {
+    setIsConfirmDialogOpen({
+      status: false,
+      type: "prev",
+    });
   };
 
   return (
@@ -89,8 +164,15 @@ export const DocumentDetailComponent: React.FC<
         <ActionContainer>
           <ActionButton onClick={onSave}>Save</ActionButton>
           <ActionButton onClick={onReset}>Reset</ActionButton>
+          <SuggestLabelModalComponent onSave={onSuggestLabel}>
+            <ActionButton>Suggest Label</ActionButton>
+          </SuggestLabelModalComponent>
         </ActionContainer>
       </ControlContainer>
+
+      {isConfirmDialogOpen.status && (
+        <ConfirmDialogComponent onConfirm={onConfirm} onCancel={onCancel} />
+      )}
     </Container>
   );
 };

@@ -47,7 +47,6 @@ export const DocumentsContextProvider: React.FC<DocumentsContextProps> = ({
   };
 
   const saveToLS = () => {
-    console.log('documents:', documents);
     localStorage.setItem('documents', JSON.stringify(documents));
   };
 

@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { DocumentsContext } from "contexts";
 import { DocumentsList } from "./DocumentsList";
-import { DEFAULT_DOCUMENTS } from "consts";
 import { Separator } from "./Separator";
 import { Container } from "./styles";
 import { DocumentDetailComponent } from "components";
 
 export const DocumentsView: React.FC = () => {
-  const documents = DEFAULT_DOCUMENTS;
+  const { documents } = useContext(DocumentsContext);
 
   const [isListCollapsed, setIsListCollapsed] = useState<boolean>(false);
   const [currentDocumentIndex, setCurrentDocumentIndex] = useState<number>(-1);
