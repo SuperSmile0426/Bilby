@@ -8,4 +8,6 @@ export const Container = styled.div<{ collapsed: string }>`
   overflow: auto;
 
   width: ${({ collapsed }) => (collapsed ? "auto" : "100%")};
+
+  flex: 0 0 auto;
 `;

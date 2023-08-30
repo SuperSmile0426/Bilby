@@ -3,6 +3,7 @@ import { DocumentsList } from "./DocumentsList";
 import { DEFAULT_DOCUMENTS } from "consts";
 import { Separator } from "./Separator";
 import { Container } from "./styles";
+import { DocumentDetailComponent } from "components";
 
 export const DocumentsView: React.FC = () => {
   const documents = DEFAULT_DOCUMENTS;
@@ -19,6 +20,24 @@ export const DocumentsView: React.FC = () => {
     setIsListCollapsed(true);
   };
 
+  const onFirstDocument = () => {
+    setCurrentDocumentIndex(0);
+  };
+
+  const onLastDocument = () => {
+    setCurrentDocumentIndex(documents.length - 1);
+  };
+
+  const onPrevDocument = () => {
+    setCurrentDocumentIndex(Math.max(currentDocumentIndex - 1, 0));
+  };
+
+  const onNextDocument = () => {
+    setCurrentDocumentIndex(
+      Math.min(currentDocumentIndex + 1, documents.length - 1)
+    );
+  };
+
   return (
     <Container>
       <DocumentsList
@@ -30,6 +49,17 @@ export const DocumentsView: React.FC = () => {
       {isListCollapsed && (
         <>
           <Separator onClick={onCollapse} />
+          {currentDocumentIndex !== -1 && (
+            <DocumentDetailComponent
+              count={documents.length}
+              index={currentDocumentIndex}
+              document={documents[currentDocumentIndex]}
+              onFirst={onFirstDocument}
+              onLast={onLastDocument}
+              onPrev={onPrevDocument}
+              onNext={onNextDocument}
+            />
+          )}
         </>
       )}
     </Container>
