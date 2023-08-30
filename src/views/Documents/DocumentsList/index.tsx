@@ -1,19 +1,28 @@
-import { IDocument } from "consts";
 import React from "react";
+import { IDocument } from "consts";
+import { DocumentComponent } from "components";
 
 interface DocumentsListProps {
   documents: IDocument[];
+  currentDocumentIndex: number;
+  onSelect: (documentIndex: number) => void;
 }
 
-export const DocumentsList: React.FC<DocumentsListProps> = ({ documents }) => {
+export const DocumentsList: React.FC<DocumentsListProps> = ({
+  documents,
+  currentDocumentIndex,
+  onSelect,
+}) => {
   return (
-    <div>
+    <>
       {documents.map((document, index) => (
-        <div>
-          <strong>{index + 1}</strong>
-          <span>{document.title}</span>
-        </div>
+        <DocumentComponent
+          key={document.id}
+          document={document}
+          onClick={() => onSelect(index)}
+          selected={currentDocumentIndex === index}
+        />
       ))}
-    </div>
+    </>
   );
 };
