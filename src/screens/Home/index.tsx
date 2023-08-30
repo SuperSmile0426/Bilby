@@ -1,5 +1,6 @@
 import React from "react";
+import { HomeView } from "views";
 
 export const HomeScreen: React.FC = () => {
-  return <div>Home Screen</div>;
+  return <HomeView />;
 };
