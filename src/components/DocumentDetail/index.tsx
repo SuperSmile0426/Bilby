@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { IDocument } from "consts";
 import {
   Container,
@@ -12,6 +12,7 @@ import {
   ActionButton,
   CountIndex,
 } from "./styles";
+import { LabelInputComponent } from "../LabelInput";
 
 interface DocumentDetailComponentProps {
   document: IDocument;
@@ -26,8 +27,22 @@ interface DocumentDetailComponentProps {
 export const DocumentDetailComponent: React.FC<
   DocumentDetailComponentProps
 > = ({ document, onFirst, onLast, onPrev, onNext, count, index }) => {
+  const [labels, setLabels] = useState<string[]>(document.labels ?? []);
+
+  useEffect(() => {
+    setLabels(document.labels ?? []);
+  }, [document]);
+
+  const onLabelChange = (newLabels: string[]) => {
+    setLabels(newLabels);
+  };
+
   const onSave = () => {
     onNext();
+  };
+
+  const onReset = () => {
+    setLabels(document.labels ?? []);
   };
 
   const onFirstClick = () => {
@@ -57,6 +72,7 @@ export const DocumentDetailComponent: React.FC<
         <GoToArticleButton href={document.url} target="#blank">
           Go to Article...
         </GoToArticleButton>
+        <LabelInputComponent labels={labels} onChange={onLabelChange} />
       </ContentContainer>
       <ControlContainer>
         <NavigationContainer>
@@ -67,6 +83,7 @@ export const DocumentDetailComponent: React.FC<
         </NavigationContainer>
         <ActionContainer>
           <ActionButton onClick={onSave}>Save</ActionButton>
+          <ActionButton onClick={onReset}>Reset</ActionButton>
         </ActionContainer>
       </ControlContainer>
     </Container>
