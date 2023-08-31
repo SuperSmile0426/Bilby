@@ -151,7 +151,7 @@ export const DocumentDetailComponent: React.FC<
         <Title>{document.title}</Title>
         <Description>{document.body}</Description>
         <GoToArticleButtonContainer>
-          <GoToArticleButton>
+          <GoToArticleButton href={document.url} target="#blank">
             Go to Article...
           </GoToArticleButton>
         </GoToArticleButtonContainer>
