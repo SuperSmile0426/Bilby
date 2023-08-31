@@ -8,6 +8,21 @@
 
 body {
   margin: 0px;
+  transition: none;
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 20px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #ddd;
+  border-radius: 20px;
 }
 
 html {

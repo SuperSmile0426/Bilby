@@ -77,6 +77,7 @@ export const ActionButtonContainer = styled.div`
   display: flex;
   margin-top: 25;
   justify-content: flex-end;
+  column-gap: 16px;
 `;
 
 export const RoundedCrossCloseButton = styled.div`

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
@@ -16,26 +16,73 @@ export const ContentContainer = styled.div`
   height: calc(100% - 150px);
 
   border: 1px solid black;
+  border-radius: 24px;
+  padding: 24px;
+
+  background-color: rgba(0, 0, 0, 0.3);
 
   overflow: auto;
+
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 `;
 
 export const CountIndex = styled.div`
   font-size: 2rem;
 `;
 
-export const Title = styled.h1``;
+export const Title = styled.h1`
+  padding: 0;
+  margin: 0;
+`;
 
-export const Description = styled.h3``;
+export const Description = styled.h3`
+  padding: 0;
+  margin: 0;
+
+  text-align: left;
+`;
+
+export const GoToArticleButtonContainer = styled.div`
+  text-align: center;
+`;
 
 export const GoToArticleButton = styled.a`
   text-decoration: none;
 
-  color: black;
+  background-color: gray;
+  color: inherit;
   font-size: 1.25rem;
   font-weight: bold;
 
+  border-radius: 16px;
+
+  padding: 8px 16px;
+
   cursor: pointer;
+
+  display: inline-block;
+
+  &:hover {
+    background-color: lightgray;
+  }
+
+  animation: bounding 1.5s infinite;
+
+  @keyframes bounding {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-3px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
 `;
 
 export const ControlContainer = styled.div`
@@ -71,6 +118,8 @@ export const ActionButton = styled.div`
   border: 1px solid black;
 
   cursor: pointer;
+
+  color: white;
 
   user-select: none;
 `;

@@ -1,9 +1,12 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Footer = styled.footer`
+  position: fixed;
+  bottom: 0px;
+  z-index: 100;
+
   width: 100%;
   height: 50px;
-  background-color: black;
   color: white;
 
   display: flex;

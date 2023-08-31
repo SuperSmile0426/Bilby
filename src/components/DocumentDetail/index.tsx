@@ -12,6 +12,7 @@ import {
   ActionContainer,
   ActionButton,
   CountIndex,
+  GoToArticleButtonContainer,
 } from "./styles";
 import { LabelInputComponent } from "../LabelInput";
 import { SuggestLabelModalComponent } from "components/SuggestLabelModal";
@@ -149,17 +150,19 @@ export const DocumentDetailComponent: React.FC<
         </CountIndex>
         <Title>{document.title}</Title>
         <Description>{document.body}</Description>
-        <GoToArticleButton href={document.url} target="#blank">
-          Go to Article...
-        </GoToArticleButton>
+        <GoToArticleButtonContainer>
+          <GoToArticleButton>
+            Go to Article...
+          </GoToArticleButton>
+        </GoToArticleButtonContainer>
         <LabelInputComponent labels={labels} onChange={onLabelChange} />
       </ContentContainer>
       <ControlContainer>
         <NavigationContainer>
           <ActionButton onClick={onFirstClick}>First</ActionButton>
-          <ActionButton onClick={onLastClick}>Last</ActionButton>
           <ActionButton onClick={onPrevClick}>Prev</ActionButton>
           <ActionButton onClick={onNextClick}>Next</ActionButton>
+          <ActionButton onClick={onLastClick}>Last</ActionButton>
         </NavigationContainer>
         <ActionContainer>
           <ActionButton onClick={onSave}>Save</ActionButton>

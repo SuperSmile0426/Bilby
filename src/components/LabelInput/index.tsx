@@ -1,12 +1,13 @@
-import React, { KeyboardEvent } from 'react';
+import React, { KeyboardEvent } from "react";
 import {
   Container,
   ContentContainer,
   Description,
+  LabelInput,
   LabelTagContainer,
   LabelTagContent,
   LabelTagRemoveCross,
-} from './styles';
+} from "./styles";
 
 interface LabelInputComponentProps {
   labels: string[];
@@ -18,7 +19,7 @@ export const LabelInputComponent: React.FC<LabelInputComponentProps> = ({
   onChange,
 }) => {
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key !== 'Enter') {
+    if (event.key !== "Enter") {
       return;
     }
 
@@ -28,7 +29,7 @@ export const LabelInputComponent: React.FC<LabelInputComponentProps> = ({
     }
 
     onChange([...labels, value]);
-    event.currentTarget.value = '';
+    event.currentTarget.value = "";
   };
 
   function removeTag(index: number) {
@@ -40,14 +41,14 @@ export const LabelInputComponent: React.FC<LabelInputComponentProps> = ({
       <Description>Labels:</Description>
       <ContentContainer>
         {labels.map((label, index) => (
-          <LabelTagContainer key={index}>
+          <LabelTagContainer onClick={() => removeTag(index)} key={index}>
             <LabelTagContent>{label}</LabelTagContent>
             <LabelTagRemoveCross onClick={() => removeTag(index)}>
               &times;
             </LabelTagRemoveCross>
           </LabelTagContainer>
         ))}
-        <input
+        <LabelInput
           onKeyDown={handleKeyDown}
           type="text"
           className=" flex-grow py-2 px-0 border-none outline-none"

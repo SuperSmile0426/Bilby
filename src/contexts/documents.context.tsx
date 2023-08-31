@@ -1,5 +1,5 @@
-import { DEFAULT_DOCUMENTS, IDocument } from 'consts';
-import React, { createContext, useEffect, useState } from 'react';
+import { DEFAULT_DOCUMENTS, IDocument } from "consts";
+import React, { createContext, useEffect, useState } from "react";
 
 interface DocumentsContextProps {
   children: React.ReactNode;
@@ -47,14 +47,18 @@ export const DocumentsContextProvider: React.FC<DocumentsContextProps> = ({
   };
 
   const saveToLS = () => {
-    localStorage.setItem('documents', JSON.stringify(documents));
+    localStorage.setItem("documents", JSON.stringify(documents));
   };
 
   const loadFromLS = () => {
-    const rawDocumentsData = localStorage.getItem('documents');
+    const rawDocumentsData = localStorage.getItem("documents");
     try {
-      const documents = JSON.parse(rawDocumentsData ?? '');
-      setDocuments(documents);
+      const documents = JSON.parse(rawDocumentsData ?? "");
+      if (documents.length > 0) {
+        setDocuments(documents);
+      } else {
+        setDocuments(DEFAULT_DOCUMENTS);
+      }
     } catch (err) {
       setDocuments(DEFAULT_DOCUMENTS);
     }

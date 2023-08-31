@@ -8,30 +8,20 @@ export const SeparatorContainer = styled.div`
 
   position: relative;
 
-  width: 48px;
   height: 100%;
 `;
 
-export const SeparatorBorder = styled.div`
-  position: absolute;
-  left: 20px;
-  right: 20px;
-  top: 0px;
-  bottom: 0px;
-  background-color: white;
-  border: 1px solid black;
-`;
-
 export const SeparatorButton = styled(CaretRightIcon)`
-  width: 48px;
+  width: 32px;
   height: 48px;
 
-  color: gray;
+  background: #666;
+  color: white;
+  font-size: 2rem;
 
-  border: 1px solid black;
-  border-radius: 100%;
-
-  background-color: white;
+  border-top-right-radius: 100%;
+  border-bottom-right-radius: 100%;
+  text-align: left;
 
   cursor: pointer;
 

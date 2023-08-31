@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SeparatorBorder, SeparatorButton, SeparatorContainer } from "./styles";
+import { SeparatorButton, SeparatorContainer } from "./styles";
 
 interface SeparatorProps {
   onClick: () => void;
@@ -9,7 +9,6 @@ interface SeparatorProps {
 export const Separator: React.FC<SeparatorProps> = ({ onClick }) => {
   return (
     <SeparatorContainer>
-      <SeparatorBorder></SeparatorBorder>
       <SeparatorButton onClick={onClick} />
     </SeparatorContainer>
   );

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Cross2Icon } from '@radix-ui/react-icons';
+import React, { useState } from "react";
+import { Cross2Icon } from "@radix-ui/react-icons";
 import {
   Root,
   Trigger,
@@ -12,10 +12,10 @@ import {
   ActionButtonContainer,
   RoundedCrossCloseButton,
   LabelsContainer,
-} from './styles';
-import { StyledButtonComponent } from '../StyledButton';
-import { DEFAULT_LABELS } from 'consts';
-import { LabelComponent } from './Label';
+} from "./styles";
+import { StyledButtonComponent } from "../StyledButton";
+import { DEFAULT_LABELS } from "consts";
+import { LabelComponent } from "./Label";
 
 interface SuggestLabelModalComponentProps {
   children: React.ReactNode;
@@ -59,8 +59,18 @@ export const SuggestLabelModalComponent: React.FC<
           </LabelsContainer>
           <ActionButtonContainer>
             <Close asChild>
-              <StyledButtonComponent onClick={onSaveLabels} actionType="green">
-                Save suggested labels
+              <StyledButtonComponent
+                onClick={() => {
+                  // Do nothing to close dialog
+                }}
+                actionType="mauve"
+              >
+                Cancel
+              </StyledButtonComponent>
+            </Close>
+            <Close asChild>
+              <StyledButtonComponent onClick={onSaveLabels} actionType="red">
+                Save
               </StyledButtonComponent>
             </Close>
           </ActionButtonContainer>

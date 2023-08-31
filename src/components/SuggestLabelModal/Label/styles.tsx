@@ -15,11 +15,12 @@ export const LabelContainer = styled.div<{ checked: string }>`
 
   border: 1px solid black;
 
-  background-color: ${({ checked }) => (checked ? 'green' : 'gray')};
+  background-color: rgba(0, 0, 0, 0.3);
+  background-color: ${({ checked }) => (checked ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0.6)')};
   cursor: pointer;
 
   &:hover {
-    background-color: green;
+    background-color: rgba(0, 0, 0, 0.8);
   }
 `;
 

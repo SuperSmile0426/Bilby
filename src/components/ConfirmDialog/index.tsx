@@ -33,12 +33,12 @@ export const ConfirmDialogComponent: React.FC<ConfirmDialogComponentProps> = ({
         <ActionButtonContainer>
           <Cancel asChild>
             <StyledButtonComponent actionType="mauve" onClick={onCancel}>
-              Discard the changes
+              Discard
             </StyledButtonComponent>
           </Cancel>
           <Action asChild>
             <StyledButtonComponent actionType="red" onClick={onConfirm}>
-              Save the changes
+              Save
             </StyledButtonComponent>
           </Action>
         </ActionButtonContainer>
