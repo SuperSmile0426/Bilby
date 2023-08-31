@@ -19,3 +19,8 @@ Third, you need to run the app by running the following command
 ```
 yarn dev
 ```
+
+## How to use the project
+
+If you have any questions, please refer this video.
+https://www.loom.com/share/8d4e1702e48846fea79871b088295f29?sid=d6911b59-01f1-4a4d-bf5a-613ce0fd50e8
